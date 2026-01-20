@@ -1,0 +1,32 @@
+﻿@model List<NWEBFinal.Application.DTOs.StudentDto>
+@{
+    ViewBag.Title = "Danh sách sinh viên";
+}
+<h1>Danh sách sinh viên</h1>
+@if (ViewBag.Error != null)
+{
+    <div class="alert alert-danger">@ViewBag.Error</div>
+}
+<p>
+    <a asp-action="Create" class="btn btn-primary">Thêm mới</a>
+</p>
+<table class="table table-striped">
+    <thead>
+        <tr><th>ID</th><th>Họ Tên</th><th>Email</th><th>Hành động</th></tr>
+    </thead>
+    <tbody>
+        @foreach (var s in Model)
+        {
+            <tr>
+                <td>@s.StudentId</td>
+                <td>@s.FullName</td>
+                <td>@s.Email</td>
+                <td>
+                    <a asp-action="Details" asp-route-id="@s.StudentId">Xem</a> |
+                    <a asp-action="Edit" asp-route-id="@s.StudentId">Sửa</a> |
+                    <a asp-action="Delete" asp-route-id="@s.StudentId">Xóa</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,45 @@
+﻿@model NWEBFinal.Application.DTOs.StudentDto
+@{
+    ViewBag.Title = "Sửa sinh viên";
+}
+<h1>Sửa sinh viên</h1>
+
+@if (ViewBag.Error != null)
+{
+    <div class="alert alert-danger">@ViewBag.Error</div>
+}
+
+<form asp-action="Edit" method="post">
+    <input type="hidden" asp-for="StudentId" />
+    <div class="mb-3">
+        <label asp-for="FullName" class="form-label"></label>
+        <input asp-for="FullName" class="form-control" />
+        <span asp-validation-for="FullName" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="DateOfBirth" class="form-label"></label>
+        <input asp-for="DateOfBirth" type="date" class="form-control" />
+        <span asp-validation-for="DateOfBirth" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Email" class="form-label"></label>
+        <input asp-for="Email" class="form-control" />
+        <span asp-validation-for="Email" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="PhoneNumber" class="form-label"></label>
+        <input asp-for="PhoneNumber" class="form-control" />
+        <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Address" class="form-label"></label>
+        <input asp-for="Address" class="form-control" />
+        <span asp-validation-for="Address" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-primary">Cập nhật</button>
+    <a asp-action="Index" class="btn btn-secondary">Hủy</a>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
